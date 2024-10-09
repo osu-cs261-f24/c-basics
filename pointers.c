@@ -1,5 +1,24 @@
 #include <stdio.h>
 
+struct student {
+  int id;
+  float gpa;
+  char* name;
+};
+
+void make_it_32(int* it) {
+  *it = 32;
+}
+
+void print_student(struct student* s) {
+  printf(
+    "== name: %s, id: %d, gpa: %f\n",
+    (*s).name,  // equivalent to s->name
+    s->id,
+    s->gpa
+  );
+}
+
 int square(int* n) {
   return *n * *n;
 }
@@ -29,4 +48,30 @@ int main() {
 
   int n_sq = square(&n);
   printf("\n== n_sq: %d\n", n_sq);
+
+  printf("\n");
+  struct student s;
+  s.name = "Luke Skywalker";
+  s.id = 933111111;
+  s.gpa = 3.75;
+  print_student(&s);
+
+  make_it_32(&n);
+  printf("\n== after make_it_32(&n)\n");
+  printf("== n: %d\n", n);
+
+  void* v_ptr = &n;
+  // printf("== *v_ptr: %d\n", *v_ptr);
+  int* i_ptr = v_ptr;
+  printf("\n== void pointers\n");
+  printf("== *i_ptr: %d\n", *i_ptr);
+  printf("== *(int*)v_ptr: %d\n", *(int*)v_ptr);
+  // v_ptr = &s;
+  print_student(v_ptr);
+  // printf(
+  //   "== name: %s, id: %d, gpa: %f\n",
+  //   v_ptr->name,
+  //   v_ptr->id,
+  //   v_ptr->gpa
+  // );
 }
