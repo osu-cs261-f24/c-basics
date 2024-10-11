@@ -67,7 +67,7 @@ int main() {
   printf("== *i_ptr: %d\n", *i_ptr);
   printf("== *(int*)v_ptr: %d\n", *(int*)v_ptr);
   // v_ptr = &s;
-  print_student(v_ptr);
+  print_student(v_ptr);  // segmentation fault; treating integer as student
   // printf(
   //   "== name: %s, id: %d, gpa: %f\n",
   //   v_ptr->name,
